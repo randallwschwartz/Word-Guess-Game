@@ -29,7 +29,7 @@ function gameBegin() {
     wins.textContent = 0;
     wrongGuesses.textContent = 0;
     guessesRem = 15;
-    formedWord = [];
+    var formedWord = [];
 
     wordToGuess = wordArray[Math.floor(Math.random() * wordArray.length)];
     lettersInWordToGuess = wordToGuess.split("");
