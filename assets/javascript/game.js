@@ -24,12 +24,13 @@ var numBlanks = 0;
 var losses = 0;
 displayedWord = [];
 wrongGuesses = [];
+var formedWord = [];
 
 function gameBegin() {
     wins.textContent = 0;
     wrongGuesses.textContent = 0;
     guessesRem = 15;
-    var formedWord = [];
+    
 
     wordToGuess = wordArray[Math.floor(Math.random() * wordArray.length)];
     lettersInWordToGuess = wordToGuess.split("");
