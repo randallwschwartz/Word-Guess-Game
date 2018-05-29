@@ -22,15 +22,21 @@ var wordToGuess = "";
 var lettersInWordToGuess = [];
 var numBlanks = 0;
 var losses = 0;
-displayedWord = [];
+
 wrongGuesses = [];
 var formedWord = [];
+wins = 0;
 
 function gameBegin() {
-    wins.textContent = 0;
-    wrongGuesses.textContent = 0;
+    // wins.textContent = 0;
+    // wrongGuesses.textContent = 0;
     guessesRem = 15;
-    
+    displayedWord = [];
+    formedWord = [];
+    wrongGuesses = [];
+
+    document.getElementById("numWins").innerHTML = wins;
+    document.getElementById("guessesRemaining").innerHTML = guessesRem;
 
     wordToGuess = wordArray[Math.floor(Math.random() * wordArray.length)];
     lettersInWordToGuess = wordToGuess.split("");
@@ -43,14 +49,13 @@ function gameBegin() {
         formedWord.push("_");
     }
 
-    // displayedWord = wordBlanks;
-    // displayedWord.textContent = wordBlanks;
     displayedWord = formedWord;
     displayedWord.textContent = formedWord;
+    document.getElementById("currentWord").innerHTML = displayedWord.join(" ");
 
     console.log("wordBlanks: " + wordBlanks);
     console.log("Displayed Word: " + displayedWord);
-
+    console.log("-------------------");
 }
 
 function letterCheck(letter) {
@@ -73,7 +78,11 @@ function letterCheck(letter) {
                 console.log("letter: " + letter);
                 console.log("displayedWord[i]: " + displayedWord[i]);
                 console.log("guessesRem: " + guessesRem);
-                console.log("-------------------");  
+                console.log("Wrong Letters Guessed: " + wrongGuesses);
+                // console.log("-------------------");  
+                document.getElementById("currentWord").innerHTML = displayedWord.join(" ");
+                document.getElementById("lettersGuessed").innerHTML = wrongGuesses.join(" ");
+                document.getElementById("guessesRemaining").innerHTML = guessesRem;
             }
         }
     }
@@ -83,22 +92,29 @@ function letterCheck(letter) {
         wrongGuesses.push(letter);
         console.log("letter: " + letter);
         console.log("guessesRem: " + guessesRem);
-        console.log("-------------------");  
+        console.log("Wrong Letters Guessed: " + wrongGuesses);
+        // console.log("-------------------");  
+        document.getElementById("currentWord").innerHTML = displayedWord.join(" ");
+        document.getElementById("lettersGuessed").innerHTML = wrongGuesses.join(" ");
+        document.getElementById("guessesRemaining").innerHTML = guessesRem;
     }
 
     console.log("letterInWord: " + letterInWord);
 
-    displayedWord.textContent = formedWord;
+    // displayedWord.textContent = formedWord;
+    document.getElementById("currentWord").innerHTML = displayedWord.join(" ");
 }
 
 function selectionEnd() {
     console.log("Displayed Word: " + displayedWord);
     console.log("letters in word to guess: " + lettersInWordToGuess);
+    console.log("-------------------");
 
     if(lettersInWordToGuess.join(" ") === displayedWord.join(" ")){
         wins++;
         alert("You win!!");
         // document.getElementById('win-counter').innerHTML = winCounter;
+        console.log("Number of Wins: " + wins);
         gameBegin();
     }
 
