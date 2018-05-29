@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hangman Game</title>
+
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  </head>
+  <body>
+
+    <div class="jumbotron">
+      <h1 class="text-center">Archer: Hangman!</h1>
+      <h2 class="text-center">Press Any Key to Get Started!</h2>
+    </div>
+
+    <div class="text-center" id="game">
+      <!-- <h1>Archer: Hangman!</h1>
+      <p>Press any key to get started!</p> -->
+      <p>Wins</p>
+      <p id="numWins"></p>
+      <p>Current Word</p>
+      <p id="currentWord"></p>
+      <p>Number of Guesses Remaining</p>
+      <p id="guessesRemaining"></p>
+      <p>Letters Already Guessed</p>
+      <p id="lettersGuessed"></p>
+
+    </div>
+
+    <script>
+
+        // Create the object.
+        // var archer = {
+
+        //     // Properties of the object.
+        //     //wordArray: ["sterling", "mallory", "lana", "cheryl", "cyril", "pamela", "krieger", "woodhouse"]
+        //     word: "sterling",
+        //     wins: 0,
+        //     guessesRemaining: 0,
+        //     lettersGuessed: 0,
+            
+        //     wordArray: ["s","t","e","r","l","i","n","g"],
+
+        //     currentWord: "_ _ _ _ _ _ _ _",
+
+        //     reWriteStats: function() {
+        //         console.log("Wins");
+        //         console.log(archer.wins);
+        //         console.log("Current Word");
+        //         console.log(archer.currentWord);
+        //         console.log("Number of Guesses Remaining");
+        //         console.log(archer.guessesRemaining);
+        //         console.log("Letters Guessed Already");
+        //         console.log(archer.lettersGuessed);
+        //         console.log("----------------------");
+        //         document.write("Wins");
+        //         document.write(archer.wins);
+        //         document.write("Current Word");
+        //         document.write(archer.currentWord);
+        //         document.write("Number of Guesses Remaining");
+        //         document.write(archer.guessesRemaining);
+        //         document.write("Letters Guessed Already");
+        //         document.write(archer.lettersGuessed);
+        //     },
+        // };
+
+        // archer.reWriteStats();
+
+        var wins = document.getElementById("numWins");
+        var currWord = document.getElementById("currentWord");
+        var guesses = document.getElementById("guessesRemaining");
+        var ltrsGuessed = document.getElementById("lettersGuessed");
+
+        wins = 0;
+        guesses = 0;
+        ltrsGuessed = 0;
+        wordToGuess = "sterling";
+        
+        //create the array of spaces for the word to be guessed
+        var wordLength = currWord.length;
+        // currWord = "";
+
+        for (var i=0; i < currWord.length; i++) {
+          currWord = "_ " + currWord;
+        }
+
+        document.onkeyup = function(event) {
+
+          // Determines which key was pressed.
+          var userChoice = event.key.toLowerCase();
+
+          // Alerts the key the user pressed (userGuess).
+          alert("User Selection: " + userChoice);
+
+          if ((userChoice === archer.word.charAt(0)) || (userChoice === archer.word.charAt(1)) || (userChoice === archer.word.charAt(2)) || (userChoice === archer.word.charAt(3))) {
+            if (userChoice === archer.word.charAt(0)){
+              // then reprint the current word and replace the underline with the first character
+              // archer.currentWord =  "somehow change currentWord to add the guessed character" 
+              archer.reWriteStats();
+            }
+            else if (userChoice === archer.word.charAt(1)){
+              archer.reWriteStats();
+            }
+            else if (userChoice === archer.word.charAt(2)){
+              archer.reWriteStats();
+            }
+            else if (userChoice === archer.word.charAt(3)){
+              archer.reWriteStats();
+            }
+          }
+        }
+
+   
+
+    </script>
+    
+  </body>
+</html>
