@@ -86,6 +86,8 @@ function letterCheck(letter) {
     }
 
     console.log("letterInWord: " + letterInWord);
+
+    displayedWord.textContent = formedWord;
 }
 
 function selectionEnd() {
