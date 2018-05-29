@@ -136,8 +136,8 @@ document.onkeyup = function(event) {
     var userChoice = event.key.toLowerCase();
 
     // Alerts the key the user pressed (userGuess).
-    alert("User Selection: " + userChoice);
-    console.log("User Selection: " + userChoice);
+    // alert("User Selection: " + userChoice);
+    // console.log("User Selection: " + userChoice);
 
     letterCheck(userChoice);
     selectionEnd();
