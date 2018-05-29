@@ -15,7 +15,7 @@ var wordArray = [
 "pam",
 "cyril",
 "krieger"
-]
+];
 
 var wordBlanks = "";
 var wordToGuess = "";
@@ -26,86 +26,85 @@ displayedWord = [];
 wrongGuesses = [];
 
 function gameBegin() {
-wins.textContent = 0;
-wrongGuesses.textContent = 0;
-guessesRem = 15;
-displayedWord = [];
+    wins.textContent = 0;
+    wrongGuesses.textContent = 0;
+    guessesRem = 15;
+    formedWord = [];
 
-wordToGuess = wordArray[Math.floor(Math.random() * wordArray.length)];
-lettersInWordToGuess = wordToGuess.split("");
-numBlanks = lettersInWordToGuess.length;
-console.log("wordToGuess: " + wordToGuess);
-console.log("lettersInWordToGuess: " + lettersInWordToGuess);
-console.log("numBlanks: " + numBlanks);
+    wordToGuess = wordArray[Math.floor(Math.random() * wordArray.length)];
+    lettersInWordToGuess = wordToGuess.split("");
+    numBlanks = lettersInWordToGuess.length;
+    console.log("wordToGuess: " + wordToGuess);
+    console.log("lettersInWordToGuess: " + lettersInWordToGuess);
+    console.log("numBlanks: " + numBlanks);
 
-for (var i=0; i < numBlanks; i++) {
-    displayedWord.push("_");
-}
+    for (var i=0; i < numBlanks; i++) {
+        formedWord.push("_");
+    }
 
-// displayedWord = wordBlanks;
-// displayedWord.textContent = wordBlanks;
-displayedWord.textContent = displayedWord;
+    // displayedWord = wordBlanks;
+    // displayedWord.textContent = wordBlanks;
+    displayedWord = formedWord;
+    displayedWord.textContent = formedWord;
 
-console.log("wordBlanks: " + wordBlanks);
-console.log("blanks and successes: " + displayedWord);
+    console.log("wordBlanks: " + wordBlanks);
+    console.log("Displayed Word: " + displayedWord);
 
 }
 
 function letterCheck(letter) {
-var letterInWord = false;
+    var letterInWord = false;
 
-var letter = letter.toLowerCase();
+    var letter = letter.toLowerCase();
 
-for(var i = 0; i < numBlanks; i++) {
-    if(lettersInWordToGuess[i] === letter) {
-    letterInWord = true;
+    for(var i = 0; i < numBlanks; i++) {
+        if(lettersInWordToGuess[i] === letter) {
+            letterInWord = true;
+        }
     }
-}
 
-if(letterInWord) {
-    for(i = 0; i < numBlanks; i++){
-    if(wordToGuess[i] === letter){
-        displayedWord[i] = letter;
+    if(letterInWord) {
+        for(i = 0; i < numBlanks; i++){
+            if(wordToGuess[i] === letter){
+                displayedWord[i] = letter;
+                guessesRem--; 
+
+                console.log("letter: " + letter);
+                console.log("displayedWord[i]: " + displayedWord[i]);
+                console.log("guessesRem: " + guessesRem);
+                console.log("-------------------");  
+            }
+        }
+    }
+
+    else {
         guessesRem--; 
-
+        wrongGuesses.push(letter);
         console.log("letter: " + letter);
-        console.log("displayedWord[i]: " + displayedWord[i]);
         console.log("guessesRem: " + guessesRem);
         console.log("-------------------");  
     }
-    }
-}
 
-else {
-    guessesRem--; 
-    wrongGuesses.push(letter);
-    console.log("letter: " + letter);
-    console.log("guessesRem: " + guessesRem);
-    console.log("-------------------");  
-}
-
-console.log("letterInWord: " + letterInWord);
-
+    console.log("letterInWord: " + letterInWord);
 }
 
 function selectionEnd() {
-console.log("Displayed Word: " + displayedWord);
-console.log("letters in word to guess: " + lettersInWordToGuess);
+    console.log("Displayed Word: " + displayedWord);
+    console.log("letters in word to guess: " + lettersInWordToGuess);
 
-if(lettersInWordToGuess.join(" ") === displayedWord.join(" ")){
-    wins++;
-    alert("You win!!");
-    // document.getElementById('win-counter').innerHTML = winCounter;
-    gameBegin();
-}
+    if(lettersInWordToGuess.join(" ") === displayedWord.join(" ")){
+        wins++;
+        alert("You win!!");
+        // document.getElementById('win-counter').innerHTML = winCounter;
+        gameBegin();
+    }
 
-else if(guessesRem === 0){
-    losses++;
-    // document.getElementById('loss-counter').innerHTML  = losses++;
-    // document.getElementById('wrong-guesses').innerHTML = "";
-    alert("You ran out of guesses.  Try another word.");        
-    gameBegin();
-}
+    else if(guessesRem === 0){
+        losses++;
+        // document.getElementById('lettersGuessed').innerHTML = "";
+        alert("You ran out of guesses.  Try another word.");        
+        gameBegin();
+    }
 
 }
 
@@ -114,14 +113,14 @@ gameBegin();
 
 document.onkeyup = function(event) {
 
-// Determines which key was pressed.
-var userChoice = event.key.toLowerCase();
+    // Determines which key was pressed.
+    var userChoice = event.key.toLowerCase();
 
-// Alerts the key the user pressed (userGuess).
-alert("User Selection: " + userChoice);
-console.log("User Selection: " + userChoice);
+    // Alerts the key the user pressed (userGuess).
+    alert("User Selection: " + userChoice);
+    console.log("User Selection: " + userChoice);
 
-letterCheck(userChoice);
-selectionEnd();
+    letterCheck(userChoice);
+    selectionEnd();
 
 }
