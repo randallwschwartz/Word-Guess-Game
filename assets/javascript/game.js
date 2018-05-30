@@ -50,10 +50,9 @@ function gameBegin() {
     }
 
     displayedWord = formedWord;
-    displayedWord.textContent = formedWord;
+    // displayedWord.textContent = formedWord;
     document.getElementById("currentWord").innerHTML = displayedWord.join(" ");
 
-    console.log("wordBlanks: " + wordBlanks);
     console.log("Displayed Word: " + displayedWord);
     console.log("-------------------");
 }
@@ -112,7 +111,7 @@ function selectionEnd() {
 
     if(lettersInWordToGuess.join(" ") === displayedWord.join(" ")){
         wins++;
-        alert("You win!!");
+        alert("You guessed the word: " + displayedWord.join("") + ". You win!!");
         // document.getElementById('win-counter').innerHTML = winCounter;
         console.log("Number of Wins: " + wins);
         gameBegin();
@@ -141,5 +140,4 @@ document.onkeyup = function(event) {
 
     letterCheck(userChoice);
     selectionEnd();
-
 }
