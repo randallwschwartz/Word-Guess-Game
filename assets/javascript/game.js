@@ -10,6 +10,7 @@ var wrongGuesses = document.getElementById("lettersGuessed");
 
 var wordArray = [
 "sterling",
+"lana",
 "mallory",
 "cheryl",
 "pam",
@@ -111,7 +112,7 @@ function selectionEnd() {
         var audio = new Audio('../zone-of-danger.mp3');
         audio.play();
 
-        alert("You guessed the word: " + displayedWord.join("") + ". You win!!");
+        alert("You guessed the character name: " + displayedWord.join("") + ". You win!!");
         console.log("Number of Wins: " + wins);
         gameBegin();
     }
