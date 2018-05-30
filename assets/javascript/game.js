@@ -79,9 +79,6 @@ function letterCheck(letter) {
                 console.log("guessesRem: " + guessesRem);
                 console.log("Wrong Letters Guessed: " + wrongGuesses);
                 // console.log("-------------------");  
-                document.getElementById("currentWord").innerHTML = displayedWord.join(" ");
-                document.getElementById("lettersGuessed").innerHTML = wrongGuesses.join(" ");
-                document.getElementById("guessesRemaining").innerHTML = guessesRem;
             }
         }
     }
@@ -93,14 +90,10 @@ function letterCheck(letter) {
         console.log("guessesRem: " + guessesRem);
         console.log("Wrong Letters Guessed: " + wrongGuesses);
         // console.log("-------------------");  
-        document.getElementById("currentWord").innerHTML = displayedWord.join(" ");
-        document.getElementById("lettersGuessed").innerHTML = wrongGuesses.join(" ");
-        document.getElementById("guessesRemaining").innerHTML = guessesRem;
     }
 
     console.log("letterInWord: " + letterInWord);
 
-    // displayedWord.textContent = formedWord;
     document.getElementById("currentWord").innerHTML = displayedWord.join(" ");
 }
 
@@ -109,17 +102,22 @@ function selectionEnd() {
     console.log("letters in word to guess: " + lettersInWordToGuess);
     console.log("-------------------");
 
+    document.getElementById("currentWord").innerHTML = displayedWord.join(" ");
+    document.getElementById("lettersGuessed").innerHTML = wrongGuesses.join(" ");
+    document.getElementById("guessesRemaining").innerHTML = guessesRem;
+
     if(lettersInWordToGuess.join(" ") === displayedWord.join(" ")){
         wins++;
+        var audio = new Audio('../zone-of-danger.mp3');
+        audio.play();
+
         alert("You guessed the word: " + displayedWord.join("") + ". You win!!");
-        // document.getElementById('win-counter').innerHTML = winCounter;
         console.log("Number of Wins: " + wins);
         gameBegin();
     }
 
     else if(guessesRem === 0){
         losses++;
-        // document.getElementById('lettersGuessed').innerHTML = "";
         alert("You ran out of guesses.  Try another word.");        
         gameBegin();
     }
