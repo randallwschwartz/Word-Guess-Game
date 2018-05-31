@@ -58,6 +58,7 @@ function gameBegin() {
 
     console.log("Displayed Word: " + displayedWord);
     console.log("-------------------");
+
 }
 
 function letterCheck(letter) {
@@ -120,8 +121,9 @@ function selectionEnd() {
 
     if(lettersInWordToGuess.join(" ") === displayedWord.join(" ")){
         wins++;
-        var audio = new Audio('../zone-of-danger.mp3');
-        audio.play();
+
+        var audio2 = document.getElementById("myAudio2");
+        audio2.play();
 
         // document.getElementById("currentWord").innerHTML = displayedWord.join(" ");
         alert("You guessed the character name: " + displayedWord.join("") + ". You win!!");
@@ -140,6 +142,7 @@ function selectionEnd() {
 
 
 gameBegin();
+
 
 document.onkeyup = function(event) {
 
