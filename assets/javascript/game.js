@@ -133,13 +133,13 @@ function selectionEnd() {
             audio3.play();
         }
         else if (displayedWord.join("") === wordArray[2]){
-            audio4.play();
-        }
-        else if (displayedWord.join("") === wordArray[3]){
             audio2.play();
         }
-        else if (displayedWord.join("") === wordArray[4]){
+        else if (displayedWord.join("") === wordArray[3]){
             audio3.play();
+        }
+        else if (displayedWord.join("") === wordArray[4]){
+            audio2.play();
         }
         else {
             audio4.play();
