@@ -123,7 +123,27 @@ function selectionEnd() {
         wins++;
 
         var audio2 = document.getElementById("myAudio2");
-        audio2.play();
+        var audio3 = document.getElementById("myAudio3");
+        var audio4 = document.getElementById("myAudio4");
+
+        if(displayedWord.join("") === wordArray[0]){
+            audio2.play();
+        }
+        else if (displayedWord.join("") === wordArray[1]){
+            audio3.play();
+        }
+        else if (displayedWord.join("") === wordArray[2]){
+            audio4.play();
+        }
+        else if (displayedWord.join("") === wordArray[3]){
+            audio2.play();
+        }
+        else if (displayedWord.join("") === wordArray[4]){
+            audio3.play();
+        }
+        else {
+            audio4.play();
+        }
 
         // document.getElementById("currentWord").innerHTML = displayedWord.join(" ");
         alert("You guessed the character name: " + displayedWord.join("") + ". You win!!");
