@@ -18,6 +18,8 @@ var wordArray = [
 "krieger"
 ];
 
+var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
 var wordBlanks = "";
 var wordToGuess = "";
 var lettersInWordToGuess = [];
@@ -60,6 +62,7 @@ function gameBegin() {
 
 function letterCheck(letter) {
     var letterInWord = false;
+    var letterInAlphabet = false;
 
     var letter = letter.toLowerCase();
 
@@ -69,31 +72,40 @@ function letterCheck(letter) {
         }
     }
 
-    if(letterInWord) {
-        for(i = 0; i < numBlanks; i++){
-            if(wordToGuess[i] === letter){
-                displayedWord[i] = letter;
-                guessesRem--; 
-
-                console.log("letter: " + letter);
-                console.log("displayedWord[i]: " + displayedWord[i]);
-                console.log("guessesRem: " + guessesRem);
-                console.log("Wrong Letters Guessed: " + wrongGuesses);
-                // console.log("-------------------");  
-            }
+    for(var j = 0; j < 26; j++) {
+        if(alphabet[j] === letter) {
+            letterInAlphabet = true;
         }
     }
 
-    else {
-        guessesRem--; 
-        wrongGuesses.push(letter);
-        console.log("letter: " + letter);
-        console.log("guessesRem: " + guessesRem);
-        console.log("Wrong Letters Guessed: " + wrongGuesses);
-        // console.log("-------------------");  
+    if(letterInAlphabet) {
+        if(letterInWord) {
+            for(i = 0; i < numBlanks; i++){
+                if(wordToGuess[i] === letter){
+                    displayedWord[i] = letter;
+                    guessesRem--; 
+
+                    console.log("letter: " + letter);
+                    console.log("displayedWord[i]: " + displayedWord[i]);
+                    console.log("guessesRem: " + guessesRem);
+                    console.log("Wrong Letters Guessed: " + wrongGuesses);
+                    // console.log("-------------------");  
+                }
+            }
+        }
+
+        else {
+            guessesRem--; 
+            wrongGuesses.push(letter);
+            console.log("letter: " + letter);
+            console.log("guessesRem: " + guessesRem);
+            console.log("Wrong Letters Guessed: " + wrongGuesses);
+            // console.log("-------------------");  
+        }
     }
 
     console.log("letterInWord: " + letterInWord);
+    console.log("letterInAlphabet: " + letterInAlphabet);
 
     document.getElementById("currentWord").innerHTML = displayedWord.join(" ");
 }
