@@ -81,7 +81,7 @@ function letterCheck(letter) {
     if(letterInAlphabet) {
         if(letterInWord) {
             for(i = 0; i < numBlanks; i++){
-                if(wordToGuess[i] === letter){
+                if(wordToGuess[i] === letter && displayedWord[i] === "_"){
                     displayedWord[i] = letter;
                     guessesRem--; 
 
@@ -89,7 +89,7 @@ function letterCheck(letter) {
                     console.log("displayedWord[i]: " + displayedWord[i]);
                     console.log("guessesRem: " + guessesRem);
                     console.log("Wrong Letters Guessed: " + wrongGuesses);
-                    // console.log("-------------------");  
+                    break;
                 }
             }
         }
@@ -100,14 +100,13 @@ function letterCheck(letter) {
             console.log("letter: " + letter);
             console.log("guessesRem: " + guessesRem);
             console.log("Wrong Letters Guessed: " + wrongGuesses);
-            // console.log("-------------------");  
         }
     }
 
     console.log("letterInWord: " + letterInWord);
     console.log("letterInAlphabet: " + letterInAlphabet);
 
-    document.getElementById("currentWord").innerHTML = displayedWord.join(" ");
+    // document.getElementById("currentWord").innerHTML = displayedWord.join(" ");
 }
 
 function selectionEnd() {
@@ -124,14 +123,16 @@ function selectionEnd() {
         var audio = new Audio('../zone-of-danger.mp3');
         audio.play();
 
+        // document.getElementById("currentWord").innerHTML = displayedWord.join(" ");
         alert("You guessed the character name: " + displayedWord.join("") + ". You win!!");
+        alert("Guess another character name.");
         console.log("Number of Wins: " + wins);
         gameBegin();
     }
 
     else if(guessesRem === 0){
         losses++;
-        alert("You ran out of guesses.  Try another word.");        
+        alert("You ran out of guesses.  Try another name.");        
         gameBegin();
     }
 
