@@ -1,0 +1,14 @@
+/*
+CSS for Archer: Hangman! Game
+*/
+
+html, body {
+    font-family: Georgia, 'Times New Roman', Times, sans-serif;
+    /* background-color: rgb(178, 221, 236); */
+    background-color: black;
+    color: white;
+    height: 100%;
+    margin: 0;
+    border-style: none;
+    border: none;
+}
